@@ -14,7 +14,7 @@ Este endpoint procesa la inscripción, encripta el método de pago y genera cred
 **Headers:** `Content-Type: application/json`
 
 **Body (JSON de ejemplo):**
-json
+```json
 {
   "nombres": "Senku",
   "apellidos": "Ishigami",
@@ -24,6 +24,7 @@ json
   "idioma_nativo": "Japonés",
   "tarjeta_credito": "4152313456789102"
 }
+```
 
 ## 2. Documentación del Servicio GraphQL (Consultar Alumnos)
 Permite consultar el catálogo de alumnos inscritos utilizando filtros dinámicos.
@@ -32,7 +33,7 @@ Permite consultar el catálogo de alumnos inscritos utilizando filtros dinámico
 **Ruta:** `/graphql`
 
 **Consulta (Query de ejemplo filtrando por idioma nativo):**
-graphql
+```graphql
 query {
   consultarAlumnos(idioma_nativo: "Japonés") {
     id
@@ -42,3 +43,7 @@ query {
     usuario
   }
 }
+```
+
+## Nota para evaluación: 
+Las consultas a la base de datos se pueden visualizar directamente abriendo el enlace del Servicio REST en el navegador (vía GET). Para probar las inscripciones (POST) y las consultas de GraphQL, favor de utilizar un cliente API como Thunder Client o Postman enviando las peticiones a los enlaces proporcionados con los ejemplos de abajo.
