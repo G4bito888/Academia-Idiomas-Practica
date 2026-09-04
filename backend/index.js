@@ -20,6 +20,19 @@ const pool = new Pool({
 // Ruta base para que no salga el "Cannot GET /" en el navegador
 app.get('/', (req, res) => res.send('Backend de la academia funcionando sin problemas'));
 
+// REST: CONSULTA GENERAL (GET) - Para ver los datos directo en el navegador
+app.get('/api/alumnos', async (req, res) => {
+    try {
+        const query = 'SELECT id, nombre_completo, idioma_nativo, nivel_asignado, usuario FROM alumnos;';
+        const result = await pool.query(query);
+        
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error("Fallo al consultar alumnos:", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+});
+
 // 1. REST: INSCRIPCIONES (POST)
 app.post('/api/alumnos', async (req, res) => {
     const { 
